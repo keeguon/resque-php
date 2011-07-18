@@ -1,8 +1,8 @@
 <?php
 
-namespace Resque;
-
 use Resque\Job;
+
+namespace Resque;
 
 class Resque
 {
