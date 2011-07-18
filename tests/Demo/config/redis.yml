@@ -1,0 +1,3 @@
+development: &defaults
+  hostname: localhost
+  port:     6379
