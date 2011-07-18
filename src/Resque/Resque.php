@@ -10,17 +10,17 @@ class Resque
   {
     if (self::$redis) return self::$redis;
 
-    if (is_string($redis)) {
+    if (is_string($server)) {
       list($hostname, $port) = explode(':', $server);
-      self::$redis = new Redis();
+      self::$redis = new \Redis();
       self::$redis->pconnect($hostname, $port);
     }
 
-    if (is_object($redis) && get_class($redis) === "Redis") {
+    if (is_object($server) && get_class($server) === "Redis") {
       self::$redis = ($server->ping()) ? $server : self::redis();
     }
 
-    self::$redis->setOption(Redis::OPT_PREFIX, 'resque:');
+    self::$redis->setOption(\Redis::OPT_PREFIX, 'resque:');
 
     return self::$redis;
   }
