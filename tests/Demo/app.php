@@ -26,5 +26,4 @@ $redis_config = Yaml::parse(__DIR__.'/config/redis.yml');
 Resque::redis("{$redis_config[$APP_ENV]['hostname']}:{$redis_config[$APP_ENV]['port']}");
 
 // Push a job to a queue
-Resque::push('broadcasts', array('class' => 'Process', 'args' => array("php /var/www/shopwiz.me/core/symfony shopwiz:send-brodcast")));
-
+Resque::push('broadcasts', array('class' => 'Process', 'args' => array("php /var/www/shopwiz.me/core/symfony shopwiz:send-brodcast", "test")));
