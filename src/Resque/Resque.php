@@ -30,7 +30,7 @@ class Resque
   public static function push($queue, $item)
   {
     self::watch_queue($queue);
-    self::$redis->rPush("queue:{$queue}", json_encode($item));
+    self::$redis->rPush("queue:{$queue}", json_encode($item, JSON_HEX_QUOT));
   }
 
   public static function pop($queue)
